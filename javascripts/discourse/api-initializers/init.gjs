@@ -47,7 +47,7 @@ export default apiInitializer((api) => {
       toolbarEvent.addText("[wrap=\"wikipedia-lookup\"][/wrap]");
     },
     icon: 'fab-wikipedia-w',
-    label: 'composer.wikipedia_lookup'
+    label: 'wikipedia_lookup_composer_text'
   });
 });
 
