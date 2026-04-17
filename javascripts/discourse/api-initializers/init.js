@@ -14,7 +14,7 @@ export default apiInitializer((api) => {
         const data = await res.json();
         if (data.pages.length === 0) return; // Exit if no matches, so don't add any styling
         wrap.classList.add("wp-lookup");
-        tooltip.show(post, {
+        tooltip.show(wrap, {
           content: data.excerpt,
           placement: "top",
           fallbackPlacements: ["bottom"],
