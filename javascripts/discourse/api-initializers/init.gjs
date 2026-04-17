@@ -11,8 +11,7 @@ export default apiInitializer((api) => {
         const search_term = wrap.textContent;
         wrap.innerHTML = "";
         const data = await getIfCached(search_term);
-        if (data === null) continue; // Exit if no matches, so don't add any styling
-        wrap.classList.add("wp-lookup");
+        if (data === null) continue;
         const content = `Full page at <a href="https://wikipedia.org/wiki/${data.key}" target="_blank" rel="noopener noreferrer">https://wikipedia.org/wiki/${data.key}</a><br />${data.excerpt}`;
         // tooltip.register(wrap, {
         //   content: content,
@@ -21,7 +20,7 @@ export default apiInitializer((api) => {
         //   triggers: ["hover"],
         // });
         helper.renderGlimmer(wrap, <template>
-          <DTooltip expanded={{true}}>
+          <DTooltip @expanded={{true}} class="wp-lookup">
             <:trigger>
               {{search_term}}
             </:trigger>
