@@ -2,8 +2,8 @@ import { apiInitializer } from "discourse/lib/api";
 import DTooltipInstance from "discourse/float-kit/lib/d-tooltip-instance";
 
 export default apiInitializer((api) => {
+  const tooltip = api.container.lookup("service:tooltip");
   api.decorateCookedElement(async (post) => {
-    const tooltip = api.container.lookup("service:tooltip");
     const wp_wraps = post.querySelectorAll("[data-wrap=\"wikipedia-lookup\"]");
     let wrap_no = 0;
     if (wp_wraps.length > 0) {
@@ -15,8 +15,10 @@ export default apiInitializer((api) => {
         if (data.pages.length === 0) return; // Exit if no matches, so don't add any styling
         wrap.classList.add("wp-lookup");
         tooltip.show(post, {
-          identifier: `wikipedia-lookup-${wrap_no}`,
-          content: data.excerpt
+          content: data.excerpt,
+          placement: "top",
+          fallbackPlacements: ["bottom"],
+          triggers: ["hover"],
         })
         wrap_no++;
       }
