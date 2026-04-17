@@ -19,7 +19,7 @@ export default apiInitializer((api) => {
         const content = `Full page at https://wikipedia.org/wiki/${data.key}` + data.excerpt.replace(/(<([^>]+)>)/ig, '') + "\n\n";
         console.log(content);
         tooltip.show(wrap, {
-          content: "hello",
+          content: content,
           placement: "top",
           fallbackPlacements: ["bottom"],
           triggers: ["hover"],
