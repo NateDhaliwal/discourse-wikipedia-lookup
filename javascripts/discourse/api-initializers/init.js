@@ -10,13 +10,15 @@ export default apiInitializer((api) => {
       for (const wrap of wp_wraps) {
         const search_term = wrap.textContent;
         wrap.id = `wikipedia-lookup-${wrap_no}`;
-        // const data = await getIfCached(search_term);
-        const res = await fetch(`https://en.wikipedia.org/w/rest.php/v1/search/page?q=${encodeURIComponent(search_term)}`);
-        let data = await res.json();
-        if (data["pages"].length === 0) continue; // Exit if no matches, so don't add any styling
+        const data = await getIfCached(search_term);
+        // const res = await fetch(`https://en.wikipedia.org/w/rest.php/v1/search/page?q=${encodeURIComponent(search_term)}`);
+        // let data = await res.json();
+        // if (data["pages"].length === 0) continue; // Exit if no matches, so don't add any styling
+        if (data === null) continue; // Exit if no matches, so don't add any styling
         data = data["pages"][0];
         wrap.classList.add("wp-lookup");
-        const content = `Full page at https://wikipedia.org/wiki/${data.key}` + data.excerpt.replace(/(<([^>]+)>)/ig, '') + "\n\n";
+        const excerpt = data.excerpt.replace(/(<([^>]+)>)/ig, '');
+        const content = `Full page at https://wikipedia.org/wiki/${data.key} \n\n ${excerpt}`;
         console.log(content);
         tooltip.show(wrap, {
           content: content,
@@ -32,12 +34,12 @@ export default apiInitializer((api) => {
   });
 });
 
-// async function getIfCached(search_term) {
-//   const searchItem = sessionStorage.getItem(search_term);
-//   if (searchItem) return JSON.parse(searchItem);
-//   const res = await fetch(`https://en.wikipedia.org/w/rest.php/v1/search/page?q=${encodeURIComponent(search_term)}`);
-//   const data = await res.json();
-//   if (data["pages"].length === 0) return null;
-//   sessionStorage.setItem(search_term, JSON.stringify(data["pages"][0]));
-//   return data["pages"][0];
-// }
+async function getIfCached(search_term) {
+  const searchItem = JSON.parse(sessionStorage.getItem(search_term));
+  if (searchItem && searchItem.key && searchItem.excerpt) return searchItem;
+  const res = await fetch(`https://en.wikipedia.org/w/rest.php/v1/search/page?q=${encodeURIComponent(search_term)}`);
+  const data = await res.json();
+  if (data["pages"].length === 0) return null;
+  sessionStorage.setItem(search_term, JSON.stringify(data["pages"][0]));
+  return data["pages"][0];
+}
