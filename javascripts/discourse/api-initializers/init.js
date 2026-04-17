@@ -15,7 +15,7 @@ export default apiInitializer((api) => {
         if (data.pages.length === 0) return; // Exit if no matches, so don't add any styling
         wrap.classList.add("wp-lookup");
         tooltip.show(wrap, {
-          content: data.excerpt,
+          content: data["pages"][0].excerpt,
           placement: "top",
           fallbackPlacements: ["bottom"],
           triggers: ["hover"],
