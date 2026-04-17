@@ -44,10 +44,10 @@ export default apiInitializer((api) => {
 
   api.addComposerToolbarPopupMenuOption({
     action: (toolbarEvent) => {
-      toolbarEvent.addText("[wrap=\"wikipedia-lookup\"][/wrap]");
+      toolbarEvent.applySurround("[wrap=\"wikipedia-lookup\"]", "[/wrap]", themePrefix("composer.placeholder_text"));
     },
     icon: 'fab-wikipedia-w',
-    label: themePrefix('wikipedia_lookup_composer_text')
+    label: themePrefix('composer.add_wrap_button_text')
   });
 });
 
