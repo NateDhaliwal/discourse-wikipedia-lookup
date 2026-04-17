@@ -12,7 +12,7 @@ export default apiInitializer((api) => {
         wrap.innerHTML = "";
         const data = await getIfCached(search_term);
         if (data === null) continue;
-        const content = `Full page at <a href="https://wikipedia.org/wiki/${data.key}" target="_blank" rel="noopener noreferrer">https://wikipedia.org/wiki/${data.key}</a><br />${data.excerpt}`;
+        const content = `Full page at <a href="https://wikipedia.org/wiki/${data.key}" target="_blank" rel="noopener noreferrer">https://wikipedia.org/wiki/${data.key}</a><br /><br />${data.excerpt}...`;
         // tooltip.register(wrap, {
         //   content: content,
         //   placement: "top",
