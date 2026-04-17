@@ -13,12 +13,7 @@ export default apiInitializer((api) => {
         wrap.innerHTML = "";
         const data = await getIfCached(search_term);
         if (data === null) continue;
-        // tooltip.register(wrap, {
-        //   content: content,
-        //   placement: "top",
-        //   fallbackPlacements: ["bottom"],
-        //   triggers: ["hover"],
-        // });
+
         helper.renderGlimmer(wrap, <template>
           <DTooltip @interactive={{true}} @placement="top-start" class="wp-lookup">
             <:trigger>
@@ -28,12 +23,12 @@ export default apiInitializer((api) => {
               <div>
                 <p>
                   Full page at 
-                  <a href="https://wikipedia.org/wiki/{{data.key}}" target="_blank" rel="noopener noreferrer">
+                  <a href={{concat "https://wikipedia.org/wiki/" data.key}} target="_blank" rel="noopener noreferrer">
                     https://wikipedia.org/wiki/{{data.key}}
                   </a>
                 </p>
                 <p>
-                  {{concat (trustHTML data.excerpt) "..."}}
+                  {{trustHTML data.excerpt}}
                 </p>
               </div>
             </:content>
