@@ -1,5 +1,3 @@
-# **Theme Name**
+# **Wikipedia Lookup**
 
-**Theme Summary**
-
-For more information, please see: **url to meta topic**
+For more information, please see: https://meta.discourse.org/t/wikipedia-lookup/400884
