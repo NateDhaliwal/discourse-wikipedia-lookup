@@ -15,7 +15,7 @@ export default apiInitializer((api) => {
         if (data === null) continue;
 
         helper.renderGlimmer(wrap, <template>
-          <DTooltip @interactive={{true}} @placement="top-start" class="wp-lookup">
+          <DTooltip @interactive={{true}} @placement="right" class="wp-lookup">
             <:trigger>
               {{search_term}}
             </:trigger>
