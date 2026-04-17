@@ -29,10 +29,10 @@ export default apiInitializer((api) => {
 
 async function getIfCached(search_term) {
   const searchItem = sessionStorage.getItem(search_term);
-  if (searchItem) return searchItem;
+  if (searchItem) return JSON.parse(searchItem);
   const res = await fetch(`https://en.wikipedia.org/w/rest.php/v1/search/page?q=${search_term}`);
   const data = await res.json();
   if (data["pages"].length === 0) return null;
-  sessionStorage.setItem(search_term, data["pages"][0]);
+  sessionStorage.setItem(search_term, JSON.stringify(data["pages"][0]));
   return data["pages"][0];
 }
