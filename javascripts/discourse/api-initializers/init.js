@@ -12,7 +12,7 @@ export default apiInitializer((api) => {
         const res = await fetch(`https://en.wikipedia.org/w/rest.php/v1/search/page?q=${search_term}`);
         const data = await res.json();
         if (data.pages.length === 0) return; // Exit if no matches, so don't add any styling
-        wrap.className.add("wp-lookup");
+        wrap.classList.add("wp-lookup");
         tooltip.register(post, {
           identifier: `wikipedia-lookup-${wrap_no}`,
           content: data.excerpt
