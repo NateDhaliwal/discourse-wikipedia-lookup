@@ -6,11 +6,11 @@ import { i18n, I18n } from "discourse-i18n";
 
 export default apiInitializer((api) => {
   // Taken from https://github.com/VaperinaDEV/discourse-composer-footnote-button
-  const currentLocale = I18n.currentLocale();
+  const currentLocale = i18n.currentLocale();
   if (!I18n.translations[currentLocale].js.composer) {
     I18n.translations[currentLocale].js.composer = {};
   }
-  I18n.translations[currentLocale].js.composer.placeholder_text = I18n.t(themePrefix("composer.placeholder_text"));
+  I18n.translations[currentLocale].js.composer.placeholder_text = i18n.t(themePrefix("composer.placeholder_text"));
   const tooltip = api.container.lookup("service:tooltip");
 
   api.decorateCookedElement(async (post, helper) => {
