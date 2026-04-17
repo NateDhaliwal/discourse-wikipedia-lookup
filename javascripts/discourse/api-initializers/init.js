@@ -20,7 +20,7 @@ export default apiInitializer((api) => {
         const excerpt = data.excerpt.replace(/(<([^>]+)>)/ig, '');
         const content = `Full page at https://wikipedia.org/wiki/${data.key} \n\n ${excerpt}`;
         console.log(content);
-        await tooltip.show(wrap, {
+        tooltip.show(wrap, {
           content: content,
           identifier: `wikipedia-lookup-${wrap_no}`
         })
