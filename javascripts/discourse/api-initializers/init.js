@@ -20,7 +20,7 @@ export default apiInitializer((api) => {
         const excerpt = data.excerpt.replace(/(<([^>]+)>)/ig, '');
         const content = `Full page at https://wikipedia.org/wiki/${data.key} \n\n ${excerpt}`;
         console.log(content);
-        tooltip.show(wrap, {
+        await tooltip.show(wrap, {
           content: content,
           placement: "top",
           fallbackPlacements: ["bottom"],
