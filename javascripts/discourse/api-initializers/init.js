@@ -11,6 +11,7 @@ export default apiInitializer((api) => {
         const search_term = wrap.textContent;
         wrap.id = `wikipedia-lookup-${wrap_no}`;
         const data = await getIfCached(search_term);
+        console.log(data);
         if (!data) return; // Exit if no matches, so don't add any styling
         wrap.classList.add("wp-lookup");
         tooltip.show(wrap, {
