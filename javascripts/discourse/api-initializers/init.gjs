@@ -41,6 +41,14 @@ export default apiInitializer((api) => {
       return;
     }
   });
+
+  api.addComposerToolbarPopupMenuOption({
+    action: (toolbarEvent) => {
+      toolbarEvent.applySurround("[wrap=\"wikipedia-lookup\"]", "[/wrap]");
+    },
+    icon: 'fab-wikipedia-w',
+    label: 'composer.wikipedia_lookup'
+  });
 });
 
 async function getIfCached(search_term) {
