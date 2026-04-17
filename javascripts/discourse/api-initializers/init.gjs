@@ -20,7 +20,7 @@ export default apiInitializer((api) => {
         //   triggers: ["hover"],
         // });
         helper.renderGlimmer(wrap, <template>
-          <DTooltip @interactive={{true}} @maxWidth={{500}} @placement="top-start" class="wp-lookup">
+          <DTooltip @interactive={{true}} @placement="top-start" class="wp-lookup">
             <:trigger>
               {{search_term}}
             </:trigger>
