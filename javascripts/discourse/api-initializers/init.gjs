@@ -2,11 +2,11 @@ import { concat } from "@ember/helper";
 import { trustHTML } from "@ember/template";
 import { apiInitializer } from "discourse/lib/api";
 import DTooltip from "discourse/float-kit/components/d-tooltip";
-import { i18n, I18n } from "discourse-i18n";
+import { i18n }, I18n from "discourse-i18n";
 
 export default apiInitializer((api) => {
   // Taken from https://github.com/VaperinaDEV/discourse-composer-footnote-button
-  const currentLocale = i18n.currentLocale();
+  const currentLocale = I18n.currentLocale();
   if (!I18n.translations[currentLocale].js.composer) {
     I18n.translations[currentLocale].js.composer = {};
   }
