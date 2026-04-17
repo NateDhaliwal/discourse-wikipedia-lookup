@@ -20,9 +20,10 @@ export default apiInitializer((api) => {
         const excerpt = data.excerpt.replace(/(<([^>]+)>)/ig, '');
         const content = `Full page at https://wikipedia.org/wiki/${data.key} \n\n ${excerpt}`;
         console.log(content);
-        tooltip.show(wrap, {
+        tooltip.register(wrap, {
           content: content,
-          identifier: `wikipedia-lookup-${wrap_no}`
+          identifier: `wikipedia-lookup-${wrap_no}`,
+          trigger: ["hover"]
         })
         wrap_no++;
       }
