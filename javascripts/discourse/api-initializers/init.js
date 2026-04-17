@@ -14,6 +14,7 @@ export default apiInitializer((api) => {
         console.log(data);
         if (!data) return; // Exit if no matches, so don't add any styling
         wrap.classList.add("wp-lookup");
+        console.log(data.excerpt.replace(/(<([^>]+)>)/ig, ''));
         tooltip.show(wrap, {
           content: data.excerpt.replace(/(<([^>]+)>)/ig, ''), // Remove HTML tags
           placement: "top",
