@@ -2,6 +2,7 @@ import { concat } from "@ember/helper";
 import { trustHTML } from "@ember/template";
 import { apiInitializer } from "discourse/lib/api";
 import DTooltip from "discourse/float-kit/components/d-tooltip";
+import { i18n } from "discourse-i18n";
 
 export default apiInitializer((api) => {
   const tooltip = api.container.lookup("service:tooltip");
@@ -23,7 +24,7 @@ export default apiInitializer((api) => {
             <:content>
               <div>
                 <p>
-                  {{themePrefix "tooltip_before_link_text"}} 
+                  {{i18n (themePrefix "tooltip_before_link_text")}} 
                   <a href="https://wikipedia.org/wiki/{{data.key}}" target="_blank" rel="noopener noreferrer">
                     https://wikipedia.org/wiki/{{data.key}}
                   </a>
