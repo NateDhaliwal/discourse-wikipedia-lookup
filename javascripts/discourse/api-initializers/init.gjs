@@ -1,9 +1,10 @@
+import { htmlSafe } from "@ember/template";
 import { apiInitializer } from "discourse/lib/api";
-import DTooltipInstance from "discourse/float-kit/lib/d-tooltip-instance";
+import DTooltip from "discourse/float-kit/components/d-tooltip";
 
 export default apiInitializer((api) => {
   const tooltip = api.container.lookup("service:tooltip");
-  api.decorateCookedElement(async (post) => {
+  api.decorateCookedElement(async (post, helper) => {
     const wp_wraps = post.querySelectorAll("[data-wrap=\"wikipedia-lookup\"]");
     if (wp_wraps.length > 0) {
       for (const wrap of wp_wraps) {
@@ -11,14 +12,23 @@ export default apiInitializer((api) => {
         const data = await getIfCached(search_term);
         if (data === null) continue; // Exit if no matches, so don't add any styling
         wrap.classList.add("wp-lookup");
-        const excerpt = data.excerpt.replace(/(<([^>]+)>)/ig, '');
-        const content = `Full page at https://wikipedia.org/wiki/${data.key} \n\n ${excerpt}`;
-        tooltip.register(wrap, {
-          content: content,
-          placement: "top",
-          fallbackPlacements: ["bottom"],
-          triggers: ["hover"],
-        })
+        const content = `Full page at <a href="https://wikipedia.org/wiki/${data.key}" target="_blank" rel="noopener noreferrer">https://wikipedia.org/wiki/${data.key}</a><br />${excerpt}`;
+        // tooltip.register(wrap, {
+        //   content: content,
+        //   placement: "top",
+        //   fallbackPlacements: ["bottom"],
+        //   triggers: ["hover"],
+        // });
+        helper.renderGlimmer(wrap, <template>
+          <DTooltip>
+            <:trigger>
+              {{search_term}}
+            </:trigger>
+            <:content>
+              {{htmlSafe content}}
+            </:content>
+          </DTooltip>
+        </template>);
       }
     } else {
       return;
