@@ -11,7 +11,7 @@ export default apiInitializer((api) => {
   if (!I18n.translations[currentLocale].js.composer) {
     I18n.translations[currentLocale].js.composer = {};
   }
-  I18n.translations[currentLocale].js.composer.placeholder_text = i18n.t(themePrefix("composer.placeholder_text"));
+  I18n.translations[currentLocale].js.composer.placeholder_text = I18n.t(themePrefix("composer.placeholder_text"));
   const tooltip = api.container.lookup("service:tooltip");
 
   api.decorateCookedElement(async (post, helper) => {
