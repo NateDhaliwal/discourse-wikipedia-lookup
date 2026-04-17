@@ -33,8 +33,8 @@ export default apiInitializer((api) => {
               <div>
                 <p>
                   {{i18n (themePrefix "tooltip_before_link_text")}} 
-                  <a href="https://wikipedia.org/wiki/{{data.key}}" target="_blank" rel="noopener noreferrer">
-                    https://wikipedia.org/wiki/{{data.key}}
+                  <a href="https://{{settings.wikipedia_base_url}}/wiki/{{data.key}}" target="_blank" rel="noopener noreferrer">
+                    https://{{settings.wikipedia_base_url}}/wiki/{{data.key}}
                   </a>
                 </p>
                 <p>
