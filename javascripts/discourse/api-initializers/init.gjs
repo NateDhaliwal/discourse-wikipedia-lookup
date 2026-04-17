@@ -21,7 +21,7 @@ export default apiInitializer((api) => {
         //   triggers: ["hover"],
         // });
         helper.renderGlimmer(wrap, <template>
-          <DTooltip>
+          <DTooltip expanded={{true}}>
             <:trigger>
               {{search_term}}
             </:trigger>
