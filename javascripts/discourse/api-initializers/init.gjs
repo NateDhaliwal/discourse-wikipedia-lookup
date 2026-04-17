@@ -1,3 +1,4 @@
+import { concat } from "@ember/helper";
 import { htmlSafe } from "@ember/template";
 import { apiInitializer } from "discourse/lib/api";
 import DTooltip from "discourse/float-kit/components/d-tooltip";
@@ -12,7 +13,6 @@ export default apiInitializer((api) => {
         wrap.innerHTML = "";
         const data = await getIfCached(search_term);
         if (data === null) continue;
-        const content = `Full page at <a href="https://wikipedia.org/wiki/${data.key}" target="_blank" rel="noopener noreferrer">https://wikipedia.org/wiki/${data.key}</a><br /><br />${data.excerpt}...`;
         // tooltip.register(wrap, {
         //   content: content,
         //   placement: "top",
@@ -25,7 +25,17 @@ export default apiInitializer((api) => {
               {{search_term}}
             </:trigger>
             <:content>
-              {{htmlSafe content}}
+              <div>
+                <p>
+                  Full page at 
+                  <a href="https://wikipedia.org/wiki/{{data.key}}" target="_blank" rel="noopener noreferrer">
+                    https://wikipedia.org/wiki/{{data.key}}
+                  </a>
+                </p>
+                <p>
+                  {{concat (htmlSafe data.excerpt) "..."}}
+                </p>
+              </div>
             </:content>
           </DTooltip>
         </template>);
