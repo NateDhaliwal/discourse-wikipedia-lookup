@@ -15,7 +15,7 @@ export default apiInitializer((api) => {
         // let data = await res.json();
         // if (data["pages"].length === 0) continue; // Exit if no matches, so don't add any styling
         if (data === null) continue; // Exit if no matches, so don't add any styling
-        data = data["pages"][0];
+        // data = data["pages"][0];
         wrap.classList.add("wp-lookup");
         const excerpt = data.excerpt.replace(/(<([^>]+)>)/ig, '');
         const content = `Full page at https://wikipedia.org/wiki/${data.key} \n\n ${excerpt}`;
