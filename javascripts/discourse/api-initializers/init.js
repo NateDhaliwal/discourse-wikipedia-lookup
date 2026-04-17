@@ -14,9 +14,9 @@ export default apiInitializer((api) => {
         console.log(data);
         if (!data) return; // Exit if no matches, so don't add any styling
         wrap.classList.add("wp-lookup");
-        console.log(data.excerpt.replace(/(<([^>]+)>)/ig, ''));
+        const content = `Full page at https://wikipedia.org/wiki/${data.key}` + data.excerpt.replace(/(<([^>]+)>)/ig, '') + "\n\n"
         tooltip.show(wrap, {
-          content: data.excerpt.replace(/(<([^>]+)>)/ig, ''), // Remove HTML tags
+          content: content,
           placement: "top",
           fallbackPlacements: ["bottom"],
           triggers: ["hover"],
