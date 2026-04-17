@@ -13,6 +13,7 @@ export default apiInitializer((api) => {
         wrap.innerHTML = "";
         const data = await getIfCached(search_term);
         if (data === null) continue;
+        const excerpt = data.excerpt.replace(/(<([^>]+)>)/ig, '').trim();
 
         helper.renderGlimmer(wrap, <template>
           <DTooltip @interactive={{true}} @placement="right" class="wp-lookup">
@@ -28,7 +29,7 @@ export default apiInitializer((api) => {
                   </a>
                 </p>
                 <p>
-                  {{trustHTML data.excerpt}}...
+                  {{excerpt}}...
                 </p>
               </div>
             </:content>
