@@ -44,7 +44,7 @@ export default apiInitializer((api) => {
 
   api.addComposerToolbarPopupMenuOption({
     action: (toolbarEvent) => {
-      toolbarEvent.applySurround("[wrap=\"wikipedia-lookup\"]", "[/wrap]", "composer.placeholder_text");
+      toolbarEvent.applySurround("[wrap=\"wikipedia-lookup\"]", "[/wrap]", "placeholder_text");
     },
     icon: 'fab-wikipedia-w',
     label: themePrefix('composer.add_wrap_button_text')
