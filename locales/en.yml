@@ -1,5 +1,5 @@
 en:
   theme_metadata:
-    description: "TODO"
+    description: "Allows for a lookup of a word or phrase on Wikipedia via a tooltip"
     settings:
       example_setting: "A description of a setting."
