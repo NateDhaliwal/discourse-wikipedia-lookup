@@ -23,12 +23,12 @@ export default apiInitializer((api) => {
               <div>
                 <p>
                   Full page at 
-                  <a href={{concat "https://wikipedia.org/wiki/" data.key}} target="_blank" rel="noopener noreferrer">
+                  <a href="https://wikipedia.org/wiki/{{data.key}}" target="_blank" rel="noopener noreferrer">
                     https://wikipedia.org/wiki/{{data.key}}
                   </a>
                 </p>
                 <p>
-                  {{trustHTML data.excerpt}}
+                  {{trustHTML data.excerpt}}...
                 </p>
               </div>
             </:content>
