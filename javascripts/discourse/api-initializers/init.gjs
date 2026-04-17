@@ -9,6 +9,7 @@ export default apiInitializer((api) => {
     if (wp_wraps.length > 0) {
       for (const wrap of wp_wraps) {
         const search_term = wrap.textContent;
+        wrap.innerHTML = "";
         const data = await getIfCached(search_term);
         if (data === null) continue; // Exit if no matches, so don't add any styling
         wrap.classList.add("wp-lookup");
