@@ -11,9 +11,10 @@ export default apiInitializer((api) => {
         const search_term = wrap.textContent;
         wrap.id = `wikipedia-lookup-${wrap_no}`;
         const data = await getIfCached(search_term);
-        if (!data) return; // Exit if no matches, so don't add any styling
+        if (!data) continue; // Exit if no matches, so don't add any styling
         wrap.classList.add("wp-lookup");
         const content = `Full page at https://wikipedia.org/wiki/${data.key}` + data.excerpt.replace(/(<([^>]+)>)/ig, '') + "\n\n";
+        console.log(content);
         tooltip.show(wrap, {
           content: content,
           placement: "top",
@@ -31,7 +32,7 @@ export default apiInitializer((api) => {
 async function getIfCached(search_term) {
   const searchItem = sessionStorage.getItem(search_term);
   if (searchItem) return JSON.parse(searchItem);
-  const res = await fetch(`https://en.wikipedia.org/w/rest.php/v1/search/page?q=${search_term}`);
+  const res = await fetch(`https://en.wikipedia.org/w/rest.php/v1/search/page?q=${encodeURIComponent(search_term)}`);
   const data = await res.json();
   if (data["pages"].length === 0) return null;
   sessionStorage.setItem(search_term, JSON.stringify(data["pages"][0]));
