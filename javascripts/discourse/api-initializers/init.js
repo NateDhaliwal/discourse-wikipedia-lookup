@@ -1,4 +1,5 @@
 import { apiInitializer } from "discourse/lib/api";
+import DTooltipInstance from "discourse/float-kit/lib/d-tooltip-instance";
 
 export default apiInitializer((api) => {
   api.decorateCookedElement(async (post) => {
@@ -13,7 +14,7 @@ export default apiInitializer((api) => {
         const data = await res.json();
         if (data.pages.length === 0) return; // Exit if no matches, so don't add any styling
         wrap.classList.add("wp-lookup");
-        tooltip.register(post, {
+        tooltip.show(post, {
           identifier: `wikipedia-lookup-${wrap_no}`,
           content: data.excerpt
         })
