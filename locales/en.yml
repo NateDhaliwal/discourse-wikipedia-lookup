@@ -5,3 +5,5 @@ en:
     placeholder_text: "Replace this text..."
   theme_metadata:
     description: "Allows for a lookup of a word or phrase on Wikipedia via a tooltip"
+    settings:
+      wikipedia_base_url: "The base URL for Wikipedia, can be changed to another language (e.g. 'es.wikipedia.org' for Spanish); must have no 'https://', 'www' in the URL
