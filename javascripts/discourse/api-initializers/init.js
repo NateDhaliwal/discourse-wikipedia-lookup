@@ -22,9 +22,7 @@ export default apiInitializer((api) => {
         console.log(content);
         await tooltip.show(wrap, {
           content: content,
-          placement: "top",
-          fallbackPlacements: ["bottom"],
-          triggers: ["hover"],
+          identifier: `wikipedia-lookup-${wrap_no}`
         })
         wrap_no++;
       }
