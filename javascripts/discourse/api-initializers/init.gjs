@@ -1,5 +1,5 @@
 import { concat } from "@ember/helper";
-import { htmlSafe } from "@ember/template";
+import { trustHTML } from "@ember/template";
 import { apiInitializer } from "discourse/lib/api";
 import DTooltip from "discourse/float-kit/components/d-tooltip";
 
@@ -33,7 +33,7 @@ export default apiInitializer((api) => {
                   </a>
                 </p>
                 <p>
-                  {{concat (htmlSafe data.excerpt) "..."}}
+                  {{concat (trustHTML data.excerpt) "..."}}
                 </p>
               </div>
             </:content>
