@@ -23,7 +23,7 @@ export default apiInitializer((api) => {
             <:content>
               <div>
                 <p>
-                  Full page at 
+                  {{themePrefix "tooltip_before_link_text"}} 
                   <a href="https://wikipedia.org/wiki/{{data.key}}" target="_blank" rel="noopener noreferrer">
                     https://wikipedia.org/wiki/{{data.key}}
                   </a>
