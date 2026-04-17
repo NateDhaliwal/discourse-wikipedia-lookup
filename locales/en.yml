@@ -2,8 +2,6 @@ en:
   tooltip_before_link_text: "Full page at"
   composer:
     add_wrap_button_text: "Wikipedia lookup"
-  js:
-    composer:
-      placeholder_text: "Replace this text..."
+    placeholder_text: "Replace this text..."
   theme_metadata:
     description: "Allows for a lookup of a word or phrase on Wikipedia via a tooltip"
