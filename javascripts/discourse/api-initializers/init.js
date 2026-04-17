@@ -9,10 +9,10 @@ export default apiInitializer((api) => {
       for (const wrap of wp_wraps) {
         const search_term = wrap.textContent;
         wrap.id = `wikipedia-lookup-${wrap_no}`;
-        // const res = await fetch(`https://en.wikipedia.org/w/rest.php/v1/search/page?q=${search_term}`);
-        // const data = await res.json();
-        // console.log(data);
-        // if (data.pages.length === 0) return;
+        const res = await fetch(`https://en.wikipedia.org/w/rest.php/v1/search/page?q=${search_term}`);
+        const data = await res.json();
+        console.log(data);
+        if (data.pages.length === 0) return;
         wrap_no++;
       }
     } else {
