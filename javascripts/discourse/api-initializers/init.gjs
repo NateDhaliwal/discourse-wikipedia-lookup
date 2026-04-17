@@ -12,7 +12,7 @@ export default apiInitializer((api) => {
         const data = await getIfCached(search_term);
         if (data === null) continue; // Exit if no matches, so don't add any styling
         wrap.classList.add("wp-lookup");
-        const content = `Full page at <a href="https://wikipedia.org/wiki/${data.key}" target="_blank" rel="noopener noreferrer">https://wikipedia.org/wiki/${data.key}</a><br />${excerpt}`;
+        const content = `Full page at <a href="https://wikipedia.org/wiki/${data.key}" target="_blank" rel="noopener noreferrer">https://wikipedia.org/wiki/${data.key}</a><br />${data.excerpt}`;
         // tooltip.register(wrap, {
         //   content: content,
         //   placement: "top",
